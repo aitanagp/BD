@@ -1,0 +1,297 @@
+VENDEDOR
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(1, 'agapito lafuente del corral', 'mecemsa', '96-5782401', 'avda. valencia 3205', 'alicante', 'alicante');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(2, 'lucia blazquez vazquez', 'harw s.a', '96-3232321', 'general lacy, 15 2', 'alicante', 'alicante');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(3, 'godofredo martin martinez', 'mecemsa', '96-4141722', 'avda. valencia 3372', 'alicante', 'alicante');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(4, 'juanito reina princesa', 'harw s.a', '903-696969', 'dondequieras, 1000. 13f', 'lo angele', 'los eus');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(5, 'juanito reina princesa', 'la deaqui', '98-5363636', 's. francisco de asis.10 1', 'gijon', 'asturias');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(6, 'manolo piedra pomez', 'hump s.a', '96-5660727', 'aviacion 92,32', 'san vicente', 'alicante');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(7, 'manuel perez rodriguez', 'softhard distribuidora s.a', '98-5696969', 'arzobispo loaces', 'ouintanar de la orde', 'toledo');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(8, 'luisa pinto heredia', 'la mejor s.a', '992-2014455', 'oxford blues', 'new orleans', 'louissiana');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(9, 'chema pamundi', 'oel españa s.a', null, null, 'rivas vaciamadrid', 'madrid');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(10, 'gustavo de basica', 'ole españa s.a', null, null, 'rivas vaciamadrid', 'madrid');
+
+insert into vendedor(numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values(11, 'mario duque lizondo', 'banestoessoft s.l.', '98-0101010', 'moros, 19', 'gijon', 'asturias');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (12, 'jose antonio martinez juan', 'ole españa, s.a.', '3667788', 'colon.21', 'valencia', 'valencia');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (13, 'manuel gomez santisteban', 'ole españa, s.a.', '3667788', 'colon,21', 'valencia', 'valencia');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (8001, 'juan rodriguez juan', 'hala s.a.', null, null, 'almoradi', 'alicante');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (8002, 'juan martinez garcia', 'harw s.a.', '3334455', 'ciscar, 5', 'valencia', 'valencia');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (8003, 'luis rodriguez sala', 'harw s.a.', '3335588', 'salamanca, 102', 'valencia', 'valencia');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (100, 'pedro garcia morales', 'soft s.a.', null, 'salamanca, 100', 'valencia', 'valencia');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (101, 'salvador martinez ortega', 'tabac & soft', '5661100', 'mayor, 44', 'san vicente', 'alicante');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (102, 'soledad martinez ortega', 'asx s.a.', '87879998', 'perez galdos, 54', 'alicante', 'alicante');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (200, 'severino martin martinez', 'sevesoft', '5779988', 'general lacy, 17', 'alicante', 'alicante');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (55, 'luis garcia satorre', 'harw s.a.', '5889944', 'poeta alonso, 12', 'alicante', 'alicante');
+
+insert into vendedor (numvend, nomvend, nombrecomer, telefono, calle, ciudad, provincia) values (201, 'manuel ortuno lafuente', 'hala s.a.', '5660788', 'mayor, 64', 'san vicente', 'alicante');
+
+
+PRECIOSUM
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('a-1001-l',1,200,3,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('a-1001-l',3,500,1,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('a-1001-l',4, 490, 1, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('a-1001-l',100, 400, 3, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('c-1002-h',1, 50, 2, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('c-1002-j',1, 150, 2, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('c-400-z',1, 850, 4, 5);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('c-400-z',8002, 700,3 , 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dd-0001-210', 1, 15000, 3,15);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dd-0001-210', 2, 17000, 5,12);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dd-0001-210', 101,14000,15,14);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dd-0001-30',1,12000,4,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dk144-0001',1,56,3,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dk144-0002-p',1,560,3,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('dk144-0002-p',2,550,5,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('fd-0001-144',1,13000,3,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('fd-0001-144',55,12000,10,13);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('fd-0001-144',102,13600,3,7);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('fd-0002-144',1,6000,3,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0001-c',1,15500,3,10);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0001-c',3,18000,7,15);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0002-c',1,15000,10,15);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0002-c',9,30000,1,5);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0003-c',1,20000,7,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0003-c',3,35000,2,15);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('m-0003-c',4,28000,7,0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0001-pp', 1, 1500, 1, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0001-pp', 5, 1950, 1, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0001-pp', 55, 1500, 7, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0002-pp', 1, 7500, 1, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0002-pp', 2, 9900, 1, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0002-pp', 5, 9875, 1, 12);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('o-0002-pp', 101, 8000, 10, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('p-0001-33', 1, 25000, 3, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('p-0001-33', 2, 21000, 5, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('p-0001-33', 3, 25000, 2, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('p-0001-33', 4, 28000, 7, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('p-0001-33', 5, 28000, 3, 10);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0001-ibm', 1, 9000, 15, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0001-ibm', 2, 9000, 5, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0001-ibm', 100, 9500, 5, 10);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0002-at', 1, 3000, 3, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0002-at', 2, 3500, 5, 7);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0002-at', 4, 2500, 7, 0);
+
+insert into preciosum (numpieza, numvend, preciounit, diassum, descuento) values ('t-0002-at', 5, 3300, 3, 0);
+
+insert into preciosum(numpieza, numvend, preciounit, diassum, descuento) values ('t-0002-at', 100, 3400, 2, 5);
+
+insert into preciosum(numpieza, numvend, preciounit, diassum, descuento) values ('t-0002-at', 201, 3000, 1, 5);
+
+insert into preciosum(numpieza, numvend, preciounit, diassum, descuento) values ('t-0003-at', 1, 7750, 3, 0);
+
+insert into preciosum(numpieza, numvend, preciounit, diassum, descuento) values ('t-0003-at', 3, 8145, null, 0);
+
+
+PIEZA
+
+insert into pieza(numpieza, nompieza, preciovent) values ('a-1001-l', 'mouse adl 3b', 700);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('c-1002-h', null, 400);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('c-1002-j', null, 700);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('c-400-z', 'filtro de pantalla x200', 1800);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('dd-0001-210', 'disco duro westefin dig 21om 28', 25000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('dd-0001-30', 'disco duro 30m seagate', 20000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('dk144-0001', 'diskette 1.44 panasonic', 110);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('dk144-0002-p', 'pack diskette 1.44 panasonic', 1000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('fd-0001-144','floppy 1.44 ibm',18000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('fd-0002-144','floppy 720k ibm',15000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('m-0001-c','monitor syncmaster 3 color',17000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('m-0002-c', 'monitor color sony st', 3500);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('m-0003-c', 'monitor ibm 3570 color', 40000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('o-0001-pp', 'pegatinas concierto jevi', 2000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('o-0002-pp', 'pack pegatinas concierto jevi', 10000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('p-0001-33', 'placa intel 33mz', 35000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('t-0001-ibm', 'teclado xt ibm', 11000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('t-0002-at', 'teclado at sususu', 5500);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('t-0003-at', 'teclado at hp', 12000);
+
+insert into pieza(numpieza, nompieza, preciovent) values ('x-ooo1-pc', 'teclado estandar pc', 7000);
+
+
+
+PEDIDO
+
+insert into pedido(numpedido, numvend, fecha) values (1, 1, "1992-05-05");
+insert into pedido(numpedido, numvend, fecha) values (2, 1, "1992-10-11");
+insert into pedido(numpedido, numvend, fecha) values (3, 2, "1992-10-15");
+insert into pedido(numpedido, numvend, fecha) values (4, 2, "1992-10-16");
+insert into pedido(numpedido, numvend, fecha) values (5, 1, "1992-10-22");
+insert into pedido(numpedido, numvend, fecha) values (6,5, "1992-08-22");
+insert into pedido(numpedido, numvend, fecha) values (7, 8002, "1992-10-02");
+
+INVENTARIO
+
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('dd-0001-30', 1, 120, "1990-10-15", 15);
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('p-0001-33', 2, 10, "1992-10-15", 5);
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('o-0002-pp', 3, 110, "1992-10-15", 3);
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('m-0001-c', 4, 15, "1992-10-15", 2);
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('m-0003-c', 5, 2, "1992-10-20", 0);
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('dd-0001-210', 6, 10, "1992-11-12", 1);
+insert into inventario(numpieza, numbin, cantdisponible, fecharecuento, cantajuste) values ('fd-0001-144', 7, 10, "1992-11-12", 15);
+
+
+LINPED
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (1, 1, 'm-0001-c', 30000, 10, "1992-05-10", 10);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (1, 2, 'p-0001-33', 21000, 20, "1992-05-10", 18);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (1, 3, 'fd-0001-144', 13500, 20, "1992-05-10", 20);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (1, 4, 'dd-0001-210', 15000, 20, "1992-05-10", 20);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (1, 5, 't-0002-at', 3100, 22, "1992-05-17", 22);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (2, 1, 'dk144-0002-p', 545, 100, "1992-10-15", 101);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (2, 2, 't-0002-at', 3000, 1, "1992-10-15", 1);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (3, 1, 'dd-0001-210', 14600, 15, "1992-10-17", 15);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (3, 2, 'p-0001-33', 21000, 3, "1992-10-17", 3);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (4, 1, 'O-0002-pp', 9900, 10, "1992-10-17", 10);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (5, 1, 't-0002-at', 1500, 15, "1995-11-11", 13);
+
+insert into linped(numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (6, 1, 'O-0001-pp', 1500, 10000, "1995-08-25", 10000);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (6, 2, 'O-0002-pp', 9900, 20000, "1995-08-25", 19980);
+
+insert into linped (numpedido, numlinea, numpieza, preciocompra, cantpedida, fecharecep, cantrecibida) values (7, 1, 'c-400-z', 700, 45, "1992-10-09", 8);
+
+C O N S U L T A S   I N I C I A L E S
+1.-
+Obtener todos los números de piezas de las piezas del catalogo. (20)
+2.-
+Número y nombre de todas las piezas con un precio de venta menor que 1000. (4)
+3.-
+Número, nombre y precio de venta de las piezas de precio de venta mayor que 1000 y
+menor que 10000, ordenadas de menor a mayor precio. (4)
+4.-
+Para  cada  pieza   suministrada,  obtener   el   número   de  pieza   y   el   descuento,   en   orden
+descendente del valor de descuento. (49)
+5.-
+Nombre de los vendedores con número de vendedor menor que 6. (5)
+6.-
+Modifica la consulta anterior para eliminar duplicados. (4)
+7.-
+Número   de  vendedor   y   nombre   de  los   vendedores   con   número   de  vendedor   menor
+que 6. (5)
+8.-
+Obtener todos los números de los vendedores que suministren alguna pieza. (12)
+9.-
+Vendedores de la provincia de Alicante. (10)
+10.-
+Nombre y empresa de los vendedores de la Comunidad Valenciana. (15)
+11.-
+Números de los vendedores y días que tardan en suministrar la pieza “P-0001-33" (5)
+12.-
+Códigos de pieza suministrados en el pedido 1, ordenados de mayor a menor precio de
+compra. (5)
+13.-
+Números de pedido y números de vendedor que lo suministraron el 15 de octubre de
+1992. (1)
+14.-
+Códigos de pieza que tienen descuento. (17)
+15.-
+Códigos   de  pieza,  de  suministrador  y   precio   de  suministro   ordenados  por  código   de
+vendedor y código de pieza. (49)
+16.-
+Obtener   el   número   de   pieza   y   las   provincias   dónde   residen   sus   suministradores.
+Ordenar en orden descendente por número de pieza. (49)
+17.-
+Modifica la consulta anterior para eliminar duplicados. (32)
+18.-
+Listar el nombre y número de las piezas. (20)
+19.-
+Obtener el nombre y número de proveedores de la provincia de Valencia. (5)
+20.-
+Obtener el nombre y número de proveedores de la provincia de Valencia a los que se
+les ha solicitado un pedido. (1)
+21.-
+Obtener  los   números   de  línea,  nombre  de  la   pieza,  unidades  pedidas  y  su  precio   de
+compra del pedido número 1. (5
+
+

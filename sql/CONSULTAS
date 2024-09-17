@@ -1,0 +1,142 @@
+C O N S U L T A S   I N I C I A L E S
+
+1.-Obtener todos los números de piezas de las piezas del catalogo. (20)
+select numpieza from pieza;
+
+2.-Número y nombre de todas las piezas con un precio de venta menor que 1000. (4)
+select numpieza, nompieza from pieza where preciovent<1000;
+
+3.-Número, nombre y precio de venta de las piezas de precio de venta mayor que 1000 y
+menor que 10000, ordenadas de menor a mayor precio. (4)
+select numpieza, nompieza, preciovent from pieza where preciovent between 1000 and 10000 order by preciovent asc;
+
+4.-Para  cada  pieza   suministrada,  obtener   el   número   de  pieza   y   el   descuento,   en   orden
+descendente del valor de descuento. (49)
+select numpieza, descuento from preciosum order by descuento desc;
+
+5.-Nombre de los vendedores con número de vendedor menor que 6. (5)
+select nomvend from vendedor where numvend < 6;
+
+6.-Modifica la consulta anterior para eliminar duplicados. (4)
+select distinct nomvend from vendedor where numvend < 6;
+7.-Número   de  vendedor   y   nombre   de  los   vendedores   con   número   de  vendedor   menor
+que 6. (5)
+select nomvend, numvend from vendedor where numvend < 6;
+
+8.-Obtener todos los números de los vendedores que suministren alguna pieza. (12)
+select distinct v.numvend from vendedor v, preciosum p where v.numvend = p.numvend;
+
+9.-Vendedores de la provincia de Alicante. (10)
+select * from vendedor where provincia='alicante';
+
+10.-Nombre y empresa de los vendedores de la Comunidad Valenciana. (15)
+select nomvend, nombrecomer from vendedor where provincia  in ('alicante', 'valencia', 'castellon');
+
+11.-Números de los vendedores y días que tardan en suministrar la pieza “P-0001-33" (5)
+select numvend, diassum from preciosum where numpieza='p-0001-33';
+
+12.-Códigos de pieza suministrados en el pedido 1, ordenados de mayor a menor precio de
+compra. (5)
+select numpieza from linped where numpedido=1 order by preciocompra desc;
+
+13.-Números de pedido y números de vendedor que lo suministraron el 15 de octubre de
+1992. (1)
+select numpedido, numvend from pedido where fecha='1992-10-15';
+
+14.-Códigos de pieza que tienen descuento. (17)
+select numpieza from preciosum where descuento!=0;
+
+15.-Códigos   de  pieza,  de  suministrador  y   precio   de  suministro   ordenados  por  código   de
+vendedor y código de pieza. (49)
+select numpieza, numvend, preciounit from preciosum order by numpieza, numvend;
+
+16.-Obtener   el   número   de   pieza   y   las   provincias   dónde   residen   sus   suministradores.
+Ordenar en orden descendente por número de pieza. (49)
+select numpieza, provincia from preciosum p, vendedor v where v.numvend=p.numvend order by numpieza desc;
+
+17.-Modifica la consulta anterior para eliminar duplicados. (32)
+select distinct numpieza, provincia from preciosum p, vendedor v where v.numvend=p.numvend order by numpieza desc;
+
+18.-Listar el nombre y número de las piezas. (20)
+select numpieza, nompieza from pieza;
+
+19.-Obtener el nombre y número de proveedores de la provincia de Valencia. (5)
+select nomvend, numvend from vendedor where provincia='valencia';
+
+20.-Obtener el nombre y número de proveedores de la provincia de Valencia a los que se
+les ha solicitado un pedido. (1)
+select nomvend, v.numvend from vendedor v, preciosum p, linped l where provincia='valencia' and v.numvend=p.numvend and p.numpieza=l.numpieza;
+
+select nomvend, numvend from vendedor where provincia='valencia';
+
+21.-Obtener  los   números   de  línea,  nombre  de  la   pieza,  unidades  pedidas  y  su  precio   de
+compra del pedido número 1. (5)
+select numlinea, numpieza, cantpedida, preciocompra from linped where numpedido=1;
+
+22.-Obtener todas las piezas que, se recuenten el 15/10/92. (3)
+select numpieza from linped where fecharecep='1992-10-15';
+
+23.-Obtener número y nombre de todas las piezas recibidas el 10 de Mayo de 1992. 
+ (4)
+select numpieza from linped where fecharecep='1992-05-10';
+
+24.-Precio unitario del número de pieza A-1001-L y el vendedor 100. (1)
+select preciounit from preciosum where numpieza='a-1001-l' and  numvend=100;
+
+25.-Nombres de proveedores que suministren la pieza numero A-1001-L. (4)
+select nomvend from vendedor v, preciosum p where v.numvend=p.numvend and numpieza='a-1001-l';
+
+26.-Obtener número y nombre de vendedores que hayan realizado algún pedido. (4)
+select distinct(v.numvend), nomvend from pedido p, vendedor v where p.numvend=v.numvend;
+
+27.-Listar nombre, teléfono, y ciudad del vendedor que suministra piezas con valor mayor
+de 10000. (9)
+select distinct nomvend, telefono, ciudad from vendedor v, preciosum p where p.numvend=v.numvend and preciounit>10000;
+
+28.-Nombre y número de los vendedores que suministran piezas con un descuento mayor
+al 10%. (6) 
+select distinct nomvend, v.numvend from vendedor v, preciosum p where p.numvend=v.numvend and descuento>10;
+
+29.-Obtener los números de pedido del vendedor número 1. (3)
+select numpedido from pedido where numvend=1;
+
+30.-Listar   los   vendedores(nombre   y   empresa)   ordenados   alfabéticamente   en   orden
+descendente. (22) 
+select nomvend, nombrecomer from vendedor order by nomvend desc;
+
+31.-Igual que el anterior pero en orden ascendente. (22)
+select nomvend, nombrecomer from vendedor order by nomvend asc;
+
+32.-Obtener los números de pieza suministrados por algún vendedor. (19)
+select numpieza from pieza p, vendedor v where v.numvend=p.numvend;
+
+33.-Número  y  nombre  de  las  piezas  que  suministran  el  vendedor  número  2  y  el  4  (no
+necesariamente las suministran los dos a la vez). (8)
+select distinct ps.numpieza, nompieza from preciosum ps, pieza p where ps.numpieza=p.numpieza and (numvend=2 or numvend=4);
+
+34.-Nombre de las piezas que suministran los vendedores de la empresa HARW S.A. (11)
+select nompieza from pieza p, preciosum ps, vendedor v where p.numpieza=ps.numpieza and ps.numvend=v.numvend and nombrecomer='harw s.a.';
+
+35.-Nombre de los vendedores que han servido alguna pieza en menos tiempo que  el ofertado.
+select distinct nomvend, diassum, fecha, fecharecep, ps.numpieza from vendedor v, preciosum ps, pedido p, linped lp where v.numvend=ps.numvend and v.numvend=p.numvend and p.numpedido=lp.numpedido and ps.numpieza=lp.numpieza and diassum>(fecharecep-fecha);
+
+36.-Número,  nombre  y  precio  de  venta  de  las  piezas  que  han  sido  suministradas  en  un
+pedido servido por el vendedor número 1. (6)
+select distinct p.numpieza, nompieza, preciovent from pieza p, linped lp where p.numpieza=lp.numpieza and numpedido in (select numpedido from pedido p, vendedor v where p.numvend=v.numvend and v.numvend=1);
+
+37.-Nombre del vendedor,número, nombre y preciovent de la pieza que ha sido comprada a un precio mayor que el estipulado en la lista de precios de suministro. (4)
+select nomvend, v.numvend, p.nompieza, preciovent from vendedor v, preciosum ps, pieza p where v.numvend=ps.numvend and ps.numpieza=p.numpieza and preciounit>preciovent;
+
+38.-Número  de  pieza  y  número  y  nombre  de  vendedor  de  aquellas  piezas  cuyo  precio  de
+venta es mayor que 5000 o su descuento de suministro es mayor que 10. (35)
+select p.numpieza, nompieza, nomvend from pieza p, preciosum ps, vendedor v where p.numpieza=ps.numpieza and v.numvend=ps.numvend and (preciounit>5000 or descuento>10);
+
+39.-Obtener  el  número  y  el  nombre  del  vendedor  así  como,  el  número  y  nombre  de  las
+piezas de precio unitario mayor que 20000 que suministren, ordenados por número y nombre de vendedor y por nombre de la pieza. (8)
+select v.numvend, nomvend, ps.numpieza, nompieza from vendedor v, pieza p, preciosum ps where ps.numvend=v.numvend and p.numpieza=ps.numpieza and preciounit>20000 order by v.numvend, nomvend, nompieza;
+
+40.-Pedidos  y  datos  del  vendedor  cuya  fecha  de  pedido  no  sea  el  22  de  octubre  de 1992.(6)
+select * from vendedor v where numvend in(select numvend from pedido where fecha not like '1992-10-22');
+
+41.-Precios  de  suministro  de  las  piezas 'DD-0001-210' y 'FD-0001-144',  y  número  y nombre de los vendedores que las suministran. (6)
+select preciounit, v.numvend, nomvend, numpieza from preciosum ps, vendedor v where v.numvend=ps.numvend and (numpieza='dd-0001-210' or numpieza='fd-0001-144');

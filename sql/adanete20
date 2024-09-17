@@ -1,0 +1,202 @@
+71.-Obtener   la   diferencia   entre   cantidad   pedida   y   cantidad   recibida   de   las   líneas   del pedido 1. (diferencia 2)
+
+select (sum(cantpedida)-sum(cantrecibida)) as diferencia
+from linped
+where numpedido=1
+
+72.-Media de días de diferencia entre la fecha del pedido 1 y de entrega (fecharecep) de
+las distintas piezas. (promedio 6 días 9:36:00)
+
+73.-Obtener la cantidad de provincias distintas de las que tenemos conocimiento de algún
+proveedor. (valor 7
+
+select count(distinct provincia) as num_provincias 
+from vendedor;
+
+
+74.-Mínima diferencia entre precio de compra y precio de suministro del vendedor al que
+se le compró. (valor -4000)
+
+select min(preciocompra-preciovent) as diferencia
+from linped l, pieza p
+where l.numpieza=p.numpieza
+
+75.-Media de precios distintos de venta de piezas. (valor 12306,1111).
+
+select avg(distinct preciovent) as media_precios_venta
+from pieza;
+
+76.-Máximo descuento (en dinero) de las piezas suministradas. (valor 5250)
+
+select max(preciounit*descuento)
+from preciosum;
+
+77.-Número, nombre y máxima diferencia entre precio de venta y precio unitario de la(s)
+pieza(s) que suministran los vendedores de Alicante. (19)
+
+select distinct p.numpieza, p.nompieza, sum(p.preciovent-pre.preciounit) as diferencia
+from pieza p, preciosum pre, vendedor v
+where v.numvend=pre.numvend
+and p.numpieza= pre.numpieza
+and ciudad='alicante'
+group by p.numpieza;
+
+
+78.-Mostrar para los vendedores de Asturias, los números de pedido, la cantidad de piezas
+que lo componen así como su precio de compra máximo y mínimo. Etiqueta las
+columnas convenientemente. (valores 6, 2, 9900,1500)
+
+
+select p.numpedido,lp.numpieza, max(lp.preciocompra), min(lp.preciocompra)
+from linped lp, pedido p, vendedor v
+where lp.numpedido=p.numpedido
+and p.numvend=v.numvend
+
+
+79.-Cantidad de piezas que ofertan los proveedores. (valor 19)
+
+select count(preciovent)
+from pieza
+
+80.-Cantidad de vendedores de nuestra BD. (valor 22)
+
+select count(numvend)
+from vendedor
+
+
+81.-Total de la diferencia en dinero entre lo pagado por compra de artículos y sus
+respectivos precios de suministro ofrecidos en su día por los proveedores si el segundo
+precio es menor que el primero. (valor 656700)
+
+select sum((lp.preciocompra - pre.preciounit) * lp.cantrecibida)
+from linped lp, preciosum pre, pedido pe, pieza p
+where pe.numpedido=lp.numpedido
+and lp.numpieza=p.numpieza
+and p.numpieza=pre.numpieza
+and pre.preciounit < lp.preciocompra;
+
+
+82.-Obtener la media de la diferencia entre el precio de venta y el de suministro indicando
+nombre y número de la pieza, precio de venta y diferencia media. (19)
+
+select p.numpieza, p.nompieza, p.preciovent, avg(pre.preciounit - p.preciovent) as diferencia
+from pieza p, preciosum pre
+where p.numpieza = pre.numpieza 
+
+
+83.-Obtener para cada pedido, la cantidad pedida así como la diferencia entre cantidad
+pedida y cantidad recibida. (7)
+
+select  numpedido, count(cantpedida), (sum(cantrecibida)-cantpedida) as diferencia
+from linped
+group by numpedido;
+
+
+84.-Obtener la cantidad de vendedores de cada empresa, indicando cantidad y nombre de
+la misma, ordenado descendentemente por cantidad de empleados. (14)
+
+select nombrecomer, count(numvend)
+from vendedor
+group by nombrecomer
+order by 2 desc
+
+85.-Obtener, por pieza recibida, la máxima diferencia entre cantidad pedida y cantidad
+recibida de entre todas las veces en que fue servida. (9)
+
+select numpieza, sum(cantpedida-cantrecibida) as max_no_recibida
+from linped
+group by numpieza
+
+
+86.-Obtener el número total de vendedores que suministran cada pieza. (19)
+
+select numpieza, count(numvend) as vendedores
+from preciosum
+group by numpieza
+
+
+87.-Obtener número de pieza y número total de vendedores que la suministran para
+piezas con un precio de venta mayor de 25000. (3)
+
+select p.numpieza, count(numvend) as vendedores
+from preciosum pre, pieza p
+where pre.numpieza=p.numpieza
+and preciovent>=25000
+group by p.numpieza;
+
+88.-De cada pieza obtener el precio unitario medio de suministro. (19)
+
+select numpieza, avg(preciounit) as media
+from preciosum pre
+group by numpieza;
+
+89.-De cada pieza de precio de venta mayor que 25000 obtener el precio medio de
+suministro. (3)
+
+select p.numpieza, avg(preciounit)
+from pieza p, preciosum pre
+where pre.numpieza=p.numpieza
+and preciovent>=25000
+group by p.numpieza;
+
+
+90.-Obtener la media de las ventas realizadas por cada vendedor de cada pieza. (12)
+
+select pre.numvend, p.numpieza, avg(preciovent)
+from pieza p, preciosum pre
+where pre.numpieza=p.numpieza
+group by pre.numvend
+
+
+91.-Obtener la cantidad de pedidos efectuados por fecha. (7)
+
+select fecha, count(numpedido) 
+from pedido
+group by fecha
+
+92.- Obtener para cada número de pieza, en cuántos pedidos aparece junto con la cantidad
+total pagada en dinero por las piezas recibidas en dichos pedidos. Ordenar por la
+cantidad de pedidos descendentemente. (9)
+
+select lp.numpieza, count(p.numpedido), sum(cantpedida*preciocompra)
+from linped lp, pedido p
+where lp.numpedido=p.numpedido
+group by numpieza
+order by p.numpedido
+
+93.-Mostrar el número de vendedor, qué cantidad de piezas ha vendido (no tiene que ver
+ni con cantpedida ni con cantrecibida) y las ganancias en dinero (precio de compra
+menos precio de suministro) de la cantidad recibida de las piezas que ha vendido cada
+vendedor. Ordenar por el número de vendedor. (4)
+
+select pre.numvend, count(p.preciovent), sum(preciovent-preciocompra)
+from preciosum pre, pieza p, vendedor v, pedido pe, linped lp
+where pre.numpieza=p.numpieza
+and v.numvend=pre.numvend
+and v.numvend=pe.numvend
+and lp.numpedido=pe.numpedido
+group by pre.numvend
+
+
+94.-Calcular, por número de pedido, la media de la diferencia entre el precio de compra y
+el de suministro de las líneas de cada pedido. (7)
+ 
+select lp.numpedido, avg(preciocompra-preciounit)
+from pedido p, vendedor v, preciosum pre, linped lp
+where lp.numpedido=p.numpedido
+and p.numvend=v.numvend
+and v.numvend=pre.numvend
+group by numpedido
+
+95.-Obtener número y nombre de cada pieza comprada junto con la cantidad de
+vendedores que las suministran, ordenado alfabéticamente por el nombre de la misma
+y eliminando aquellas compradas a proveedores de la provincia de Alicante. (3)
+
+select p.numpieza, p.nompieza, count(v.numvend)
+from pieza p, linped lp, vendedor v, pedido pe
+where p.numpieza=lp.numpieza
+and lp.numpedido=pe.numpedido
+and pe.numvend=v.numvend
+and not provincia = 'alicante'
+group by numpieza
+order by nompieza

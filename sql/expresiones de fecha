@@ -1,0 +1,42 @@
+E X P R E S I O N E S D E F E C H A
+
+60.-Obtener el número de pieza de las piezas que se recuenten el 15/10/92. (3)
+select numpieza from inventario where fecharecuento='1992-10-15';
+
+61.-Números de pieza de las piezas que se recuentan entre el 1 de Octubre de 1992 y el 31 
+select numpieza from inventario where fecharecuento between '1992-10-1' and '1992-10-31';
+
+62.-Número y fecha de los pedidos realizados en el segundo semestre del 92. (6)
+select numpedido, fecha from pedido where fecha between '1992-07-1' and '1992-12-31';
+
+63.-Nombre  de  los  vendedores  que  sirvieron  piezas  en  la  primera  quincena  de  mayo  del 92.(1)
+select nomvend from vendedor v, pedido p where v.numvend=p.numvend and fecha between '1992-05-1' and '1992-05-15';
+
+64.-Número, nombre de vendedor y mes en que se les envió un pedido de discos duros. (4)Puedes usa función MONTH. 
+select distinct v.numvend, nomvend, month(fecha) from vendedor v, pedido p where v.numvend=p.numvend and v.numvend in(select numvend from preciosum ps, pieza p where p.numpieza=ps.numpieza and nompieza like '%disco duro%');
+
+65.-Años en que se ha efectuado algún recuento. (2) Puedes usar    la función YEAR. 
+select distinct year(fecharecuento) from inventario;
+
+66.-Número y nombre de las piezas que sirvieron los proveedores los días 10 de cada mes.(4)Puedes usar la función  DAYOFMOTH. 
+select p.numpieza, nompieza from pieza p, linped lp where p.numpieza=lp.numpieza and dayofmonth(fecharecep)=10;
+
+67.-Número y descripción de las piezas que sirvieron los proveedores en el 95 (fecharecep)y cuyo precio de compra es superior al de suministro. (1)
+select distinct p.numpieza, nompieza from pieza p, linped lp, preciosum ps where p.numpieza=lp.numpieza and ps.numpieza=p.numpieza and year(fecharecep)=1995 and preciocompra>preciounit;
+
+68.-Obtener los números de pedido, precio de compra y  cantidad pedida de los númerosde línea 1 y recibidas en fecha 10-05-92. (1)
+select numpedido, preciocompra, cantpedida from linped where numlinea=1 and fecharecep='1992-05-10';
+
+69.-Número y descripción de piezas que fueron recontadas en fecha anterior a la fecha de su compra(fecha del pedido) siempre que el año de compra sea como máximo el 1992.(1) Puedes usar la función YEAR.
+select pi.numpieza, nompieza 
+from pieza pi, pedido pe, inventario i, linped lp 
+where pi.numpieza=i.numpieza 
+and pi.numpieza=lp.numpieza 
+and lp.numpedido=pe.numpedido 
+and fecharecuento<fecha
+and year(fecha)=1992;
+
+70.-Número  de  pieza,  descripción,  fecha  de  recepción  y  cantidad  recibida,  de  las  piezas recibidas en el año 1995 y el precio de venta está entre 5000 y 10000. Puedes usar la función YEAR
+select pi.numpieza, nompieza, fecharecep, cantrecibida from pieza pi, linped lp where pi.numpieza=lp.numpieza and year(fecharecep)=1995 and preciovent between 5000 and 10000;
+
+

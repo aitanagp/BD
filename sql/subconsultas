@@ -1,0 +1,226 @@
+S U B C O N S U L T A S
+136.-Obtener   los   números   de   pieza   que   no   son   suministrados   por   ningún   vendedor.Resuelve el ejercicio de 3 formas distintas. (1 registro con valor X-0001-PC)
+select numpieza 
+from pieza
+where numpieza not in (select numpieza from preciosum);
+
+select numpieza 
+from pieza p
+where not exists(select numpieza from preciosum ps where p.numpieza=ps.numpieza);
+
+select p.numpieza from pieza p
+left join preciosum ps on (p.numpieza=ps.numpieza) where ps.numpieza is null;
+
+137.-Obtener   todos   los   datos   de   los   vendedores   que   han   servido   el   mayor   número   de pedidos. (1 registro, datos del numvend 1)
+
+select * 
+from vendedor v, pedido p
+where v.numvend=p.numvend
+group by v.numvend
+having count(*)>=all(select count(*) from pedido group by numvend);
+
+138.-Número   y   nombre   de   los   vendedores   que   no   ofertan   ninguna   pieza. Resuelve el ejercicio de 2 formas distintas. (10)
+
+select numvend, nomvend
+from vendedor
+where numvend not in(select numvend from preciosum);
+
+select v.numvend 
+from vendedor v
+left join preciosum ps in (v.numvend=ps.numvend);
+
+139.-Número   y   nombre   de   los   vendedores   que   han   servido   algún   pedido.   Resuelve   el ejercicio de 2 formas distintas. (4
+
+select numvend, nomvend
+from vendedor
+where numvend in(select numvend from pedido);
+
+select v.numvend, nomvend
+from vendedor v
+where exists(select p.numvend from pedido p where p.numvend=v.numvend);
+
+140.-Obtener el nombre y número de proveedores de la provincia de Valencia a los que se
+les ha solicitado un pedido. Si te suena es normal, es el mismo enunciado de la consulta
+20 pero ahora quiero que la resuelvas mediante subconsultas de 2 formas diferentes.(1)
+
+select nomvend, numvend
+from vendedor
+where provincia like 'valencia' 
+and numvend in(select numvend from pedido);
+
+select nomvend, v.numvend
+from vendedor v
+where provincia like 'valencia' 
+and exists(select p.numvend from pedido p where p.numvend=v.numvend);
+
+141.-Número y nombre de los vendedores que no han servido ningún pedido. Resuelve el
+ejercicio de 2 formas distintas. (18)
+select nomvend, numvend
+from vendedor
+where numvend not in (select numvend from pedido);
+
+select nomvend, v.numvend
+from vendedor v
+where not exists(select p.numvend from pedido p where p.numvend=v.numvend);
+
+142.-Número   y   nombre   de  las   piezas   que   tienen   un   preciovent   (tabla   pieza) mayor que todos los precios máximos de compra de cada pedido. (3)
+select p.numpieza, nompieza
+from pieza p
+where preciovent>(select max(preciocompra) from linped);
+
+select p.numpieza, nompieza
+from pieza p
+where exists(select max(preciocompra) from linped lp having preciovent>max(preciocompra));
+
+143.-Mostrar todos los datos de la pieza que se ha vendido más veces. (1 registro, datos
+pieza T-0002-AT)
+
+select *
+from pieza 
+where numpieza in(select numpieza from linped group by numpieza having count(*)=(select max(maximo) from(select count(*) as maximo from linped group by numpieza) as subquery));
+
+
+144.-Mostrar para cada línea de pedido: número de pedido, número de línea, número de
+pieza, cantidad pedida y la diferencia con la media de la cantidad pedida en todos  los
+pedidos.   (14   registros,   con   valores   de   diferencia   negativos   para   todos   las   piezas excepto  O-0001-PP y O-0002-PP).
+select numpedido, numlinea, numpieza, cantpedida, cantpedida-(select avg(cantpedida) from linped) from linped;
+
+145.-Mostrar   toda   la   información   de   las   piezas   que   no   hemos   vendido   nunca   ni   se encuentran en nuestro inventario. Resuelve el ejercicio de 2 formas distintas. (9)
+select * 
+from pieza p
+where not exists(select numpieza from inventario i where i.numpieza=p.numpieza)
+and not exists(select numpieza from linped lp where lp.numpieza=p.numpieza);
+
+select * 
+from pieza p
+where numpieza not in (select numpieza from inventario)
+and numpieza not in(select numpieza from linped);
+
+146.-Cantidad   de   piezas   que   ofertan   los   proveedores.   ¿Te   recuerda   a   alguna   consulta anterior? Correcto, es la 79, pero ahora quiero que la resuelvas mediante subconsultas de 3 formas distintas. (valor 19)
+
+select count(*)
+from pieza
+where numpieza in(select numpieza from preciosum group by numpieza);
+
+select count(*)
+from pieza p
+where exists(select numpieza from preciosum ps where ps.numpieza=p.numpieza group by numpieza);
+
+147.-Máximo   preciounit   de   suministro   de   la   pieza   que   se   ha   vendido   más   veces.   (Valor 3500)
+select max(preciounit)
+from preciosum
+where numpieza in(select numpieza from linped group by numpieza having count(*)=(select max(cnt) from(select count(*) as cnt from linped group by numpieza) as subquery));
+
+148.-Nombre   de   la   empresa   que   ofrece   la   pieza   más   barata   de   precio   de   suministro.Resuelve el ejercicio de 2 formas distintas. (1 registro: MECEMSA)
+select nombrecomer
+from vendedor v, preciosum ps
+where v.numvend=ps.numvend
+having count(v.numvend)<=all(select count(preciounit) from preciosum ps, vendedor v
+where ps.numvend=v.numvend);
+
+149.-Número y nombre de pieza y nombre de la empresa que ofrece cada pieza a un precio
+menor de suministro. (21) 
+select p.numpieza, nompieza, nombrecomer
+from pieza p, vendedor v, preciosum ps 
+where ps.numvend=v.numvend and ps.numpieza=p.numpieza
+group by 1, 2, 3
+having min(preciounit)<= all(select min(preciounit) from preciosum ps where ps.numpieza=p.numpieza); 
+
+150.-Número y descripción de la pieza más cara. (valores: M-0003-C, MONITOR IBM 3570
+COLOR)
+select numpieza, nompieza
+from pieza p
+where p.numpieza=(select ps.numpieza from preciosum ps where ps.preciounit=(select max(preciounit) from preciosum));
+
+151.-Obtener   la   cantidad   de   provincias   distintas   de   las   que   tenemos   
+conocimiento   dealgún proveedor. ¿Te suena esta consulta? Exacto, es la 73, 
+pero ahora quiero que la resuelvas mediante subconsultas de dos formas diferentes. (valor 7)
+select count(distinct provincia)
+from vendedor v
+left join preciosum ps on(v.numvend=ps.numvend);
+
+select count(distinct provincia)
+from vendedor v
+where v.numvend exists(select ps.numvend from preciosum ps where ps.numvend=v.numvend);
+
+152.-Número de pedido y precio total pagado del pedido más caro. (número de pedido 6,
+212802000)
+select numpedido, preciocompra*cantpedida from linped where numpedido=(select numpedido from linped where cantpedida*preciocompra=(select max(cantpedida*preciocompra) from linped));
+
+153.-Número y nombre de las piezas recibidas después de todas las fechas de pedido. (3)
+select p.numpieza, nompieza
+from pieza p, linped lp 
+where p.numpieza=lp.numpieza 
+and fecharecep>=all(select fecha from pedido);
+
+154.-Número   y   nombre   del   vendedor   que   ha   servido   el   pedido   más   caro.(número   de vendedor 5, JUANITO REINA PRINCESA)
+select v.numvend, nomvend
+from vendedor v, pedido p, linped lp
+where v.numvend=p.numvend
+and p.numpedido=lp.numpedido
+group by lp.numpedido
+having sum(preciocompra*cantpedida)>=all(select sum(preciocompra*cantpedida) from linped group by numpedido);
+
+
+155.-Número,   descripción   y   precio   de   venta   de   los   monitores   que   no   han sido nunca comprados. Resuelve la consulta de 2 formas distintas. (2
+select p.numpieza, nompieza, preciovent
+from pieza p
+where p.numpieza not exists(select lp.numpieza from linped lp  where lp.numpieza=p.numpieza);
+
+
+156.-Mostrar   número   y   nombre   del   vendedor   y   la   cantidad   de   piezas   distintas   que   ha vendido   cada   uno   (no   tiene   nada   que   ver   con   cantpedida   ni   con   cantrecibida),   de aquellos vendedores que trabajan en la empresa con más proveedores. (2)
+select v.numvend, nomvend, count(numpieza)
+from vendedor v, pieza p
+where 
+
+select nombrecomer, count(numvend) from vendedor group by nombrecomer having count(numvend)=all(select count(numvend) from vendedor group by nombrecomer);
+
+157.-Medía de precios distintos de venta de piezas. ¿Esta consulta también te suena? Muy
+observador, es la 75, pero ahora quiero que la resuelvas mediante subconsultas. (valor
+12306,1111). 
+Ten cuidado que la columna del Data Output sea lo suficiente grande para
+ver el resultado completo.
+158.-
+Nombre de los suministradores (excepto el vendedor número 5) que proporcionan al
+menos alguna de las piezas que suministra el vendedor número 5. (8)
+159.-
+Mostrar para cada pieza todos sus datos y la diferencia con el mayor precio de venta
+de todas las piezas. (20 registros, todas diferencias negativas menos M-0003-C que es
+0) 
+160.-
+Listar los vendedores que sean de la misma provincia que el vendedor número 100.
+Emplea 3 estructuras de subconsultas diferentes para resolver la consulta. (5)
+161.-
+Listar los vendedores que sean de la misma provincia que el vendedor número 100
+excepto vendedor 100. Busca la solución de 3 formas.  (4)
+162.-
+Obtener   los   nombres   de   los   vendedores   de   la   misma   empresa   que   Luis   García.
+Emplea EXISTS para resolver la consulta. (5)
+163.-
+Obtener   los   nombres   de   los   vendedores   de   la   misma   empresa   que   Luis   García
+excepto él mismo. Busca la solución usando IN. (4)
+164.-
+Cantidad de suministradores de la pieza que se ha vendido más veces. (Valor 6)
+165.-
+Número y descripción de las piezas cuyo precio medio de suministro esté por encima
+del mayor precio de compra pagado por ella. (6)
+166.-
+Número,   nombre,  empresa  en   la   que  trabaja  y   número   de  piezas  que  suministra   el
+vendedor  que  tiene   la   media   más   alta   de  piezas  recibidas.  (valores:  5,  Juanito   Reina
+Princesa, La DeAquí, 4)
+167.-
+Mostrar el promedio de la cantidad de suministradores de cada pieza. (Valor: 2.5789)
+168.-
+Mostrar   número   y   nombre   de  las   piezas   que   tienen   menos   suministradores   que  el
+promedio de la cantidad de suministradores de cada pieza. Ordenado por número de
+pieza. (10)
+169.-
+Nombre de la empresa con mayor importe de ventas. (Valor: LA DEAQUÍ)
+170.-
+Número   y  descripción  de la  pieza  que  ha  sido pedida  más  veces.  (Valor:  T-0002-AT,
+TECLADO AT SUSUSU)
+171.-
+Número   y   descripción   de   las   piezas   que   son   suministradas   por   proveedores   de   la
+provincia   de   Valencia   o   que   son   suministradas   por   el   vendedor   que   ha   realizado   la
+menor venta. (4
+

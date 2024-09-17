@@ -1,0 +1,69 @@
+create database proveedores;
+
+VENDEDOR
+create table vendedor(
+numvend int,
+nomvend char(30),
+nombrecomer char(30),
+telefono char(15),
+calle char(30),
+ciudad char(20),
+provincia char(20),
+primary key(numvend));
+
+PIEZA
+create table pieza(
+numpieza char(16), 
+nompieza char(30), 
+preciovent int,
+primary key(numpieza));
+
+PRECIOSUM
+create table preciosum(   
+numpieza char(16),   
+numvend int,   
+preciounit int,
+diassum int, 
+descuento int,
+primary key(numpieza, numvend),
+foreign key (numpieza) 
+references pieza (numpieza),
+foreign key (numvend)
+references vendedor (numvend));
+
+PEDIDO
+create table pedido(
+numpedido int, 
+numvend int, 
+fecha date,
+primary key(numpedido),
+foreign key(numvend)
+references vendedor(numvend));
+
+INVENTARIO
+create table inventario(
+numpieza char(16),
+numbin int,   
+cantdisponible int, 
+fecharecuento date, 
+cantajuste int,
+primary key (numpieza),
+foreign key(numpieza)
+references pieza(numpieza));
+
+LINPED
+create table linped(
+numpedido int,
+numlinea int,   
+numpieza char(16),
+preciocompra int,     
+cantpedida int,     
+fecharecep date,
+cantrecibida int,
+primary key(numpedido, numlinea),
+foreign key(numpedido) 
+references pedido(numpedido),
+foreign key(numpieza)
+references pieza(numpieza));
+
+

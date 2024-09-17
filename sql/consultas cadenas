@@ -1,0 +1,78 @@
+C O M P A R A D O R E S   D E   C A D E N A
+
+42.-Lista   las   piezas   (nombre)   suministradas   por   aquellos   proveedores   cuyo   nombre
+empiece por S. (3)
+select nompieza from pieza p, preciosum ps, vendedor v where p.numpieza=ps.numpieza and v.numvend=ps.numvend and nomvend like 's%';
+
+43.-Obtener el nombre de las piezas suministradas por aquellos proveedores cuyo nombre
+empiece por S y tengan como primer apellido MARTIN o PLA. (2)
+select nompieza from pieza p, preciosum ps, vendedor v where p.numpieza=ps.numpieza and v.numvend=ps.numvend and 
+(nomvend like 's%martin%' or nomvend like 's%pla%');
+
+44.-Número   y   nombre   de   los   vendedores   cuyo   nombre   comience   por   J   y   contenga   al
+menos otra J.  (2)
+select nomvend, numvend from vendedor where nomvend like 'j%j%';
+
+45.-Nombres de los vendedores que termina su nombre por Z. (5)
+select nomvend from vendedor where nomvend like '%z';
+
+46.-Nombres de los vendedores que se apellidan MARTINEZ. (5)
+select nomvend from vendedor where nomvend like '%martinez%';
+
+47.-Nombre de los vendedores cuyo nombre empieza por M seguido de un carácter, una R
+y una cadena de n caracteres. (1)
+select nomvend from vendedor where nomvend like 'm_r%';
+
+48.-Obtener los vendedores de la provincia de Valencia o Alicante que su nombre empieza
+por J o por M y tienen un número de vendedor entre 1 y 100. (3)
+select nomvend from vendedor where (provincia='alicante' or provincia='valencia') and (nomvend like 'j%' or nomvend like 'm%') and numvend between 1 and 100;
+
+49.-Listar   los   nombres   y   números   de   vendedores   así   como   el   número   y   nombre   de   las
+piezas que suministran para los vendedores de la provincia de Valencia o Alicante y el número de  pieza tiene una longitud de  8  caracteres.  Puedes usar la función LENGTH.o los caracteres comodín.(10)
+select nomvend, v.numvend, p.numpieza, nompieza from vendedor v, preciosum ps, pieza p where v.numvend=ps.numvend and p.numpieza=ps.numpieza and (provincia='alicante' or provincia='valencia') and length(p.numpieza)=8;
+
+50.-Obtener los nombres de pieza que venden los vendedores de apellido 'García'. (5)
+select nompieza from pieza where numpieza in (select numpieza from preciosum ps, vendedor v where v.numvend=ps.numvend and nomvend like '%garcia%');
+
+select nompieza, nomvend from pieza p, preciosum ps, vendedor v where ps.numpieza=p.numpieza and v.numvend=ps.numvend and nomvend like '%garcia%';
+
+51.-Piezas que suministra algún vendedor cuyo numpieza contiene al menos una P o una A. (7)
+select numpieza, nompieza from pieza where (numpieza like '%p%' or numpieza like '%a%') and numpieza in
+(select numpieza from preciosum ps, vendedor v where v.numvend=ps.numvend);
+
+52.-Obtener todos los vendedores que tengan teléfono y o bien el nombre de la empresa no es S.A. o bien el nombre de la empresa empieza por HALA. (7)
+select * from vendedor where telefono is not null and (nombrecomer not like '%s.a%' or nombrecomer like 'hala%');
+
+53.-Listar   las   piezas   (número   y   nombre)   con   un   descuento   entre   1   y   10   cuyo   nombre
+contenga una O y que las hayan vendido proveedores cuyo número oscile entre el 1 y el 1000. (1)
+select p.numpieza, nompieza 
+from pieza p, linped lp, preciosum ps, vendedor v, pedido pe 
+where p.numpieza=ps.numpieza 
+and ps.numvend=v.numvend 
+and v.numvend=pe.numvend 
+and lp.numpedido=pe.numpedido
+and p.numpieza=lp.numpieza
+and nompieza like '%o%'
+and descuento between 1 and 10
+and v.numvend between 1 and 1000;
+
+54.-Obtener nombre de vendedores y nombre de piezas que suministran aquellos vendedores cuyo primer apellido tiene 5 letras y el nombre de la pieza contiene un 3, ordenado en orden alfabético. (3)
+select v.numvend, nomvend from vendedor v, preciosum ps where nomvend like '% _____ %' and v.numvend=ps.numvend and numpieza like '%3%';
+
+55.-Obtener los nombres de las piezas, su preciovent, el precio de suministro y el número de vendedor de aquellas piezas que son TECLADO, las suministran los vendedores 100, 300 y  400 con un precio de venta entre 1000 y 100000 y un precio unitario entre 100 y 50000. (2)
+select p.numpieza, preciovent, preciounit from pieza p, preciosum ps where p.numpieza=ps.numpieza and nompieza like '%teclado%' and numvend=100 and numvend=300 and numvend=400;
+
+56.-Obtener el número de pieza y el precio de los monitores. (3)
+select numpieza, preciovent from pieza where nompieza like '%monitor%';
+
+57.-Nombre   de   las   piezas   suministradas   desde   la   Comunidad   Valenciana   cuyo   nombre contiene las cadenas IBM o SEAGATE. (5)
+select distinct nompieza from pieza p, preciosum ps, vendedor v where p.numpieza=ps.numpieza and v.numvend=ps.numvend and provincia in ('alicante', 'valencia', 'castellon') and (nompieza like '%ibm%' or nompieza like '%seagate%');
+
+58.-Obtener los vendedores que pertenecen a la empresa Harw S.A. y viven en las calles
+Ciscar o Salamanca. (2)
+select * from vendedor where nombrecomer='harw s.a.' and (calle like '%ciscar%' or calle like '%salamanca%');
+
+59.-Obtener   nombres   de   vendedores   y   números   de   pieza   que   suministran   aquellos
+vendedores cuyo apellido comienza por Martín. Ordénalos alfabéticamente. (7) 
+select nomvend, numpieza from vendedor v, preciosum ps where v.numvend=ps.numvend and nomvend like '% martin%' order by nomvend asc; 
+

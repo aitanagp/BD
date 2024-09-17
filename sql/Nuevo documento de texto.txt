@@ -1,0 +1,27 @@
+Aquí tienes 10 enunciados seleccionados aleatoriamente de la lista que me proporcionaste:
+
+1. Obtener los números de pieza y las provincias donde residen sus suministradores, 
+ordenados en orden descendente por número de pieza.
+select numpieza, provincia
+from vendedor v, preciosum ps
+where v.numvend=ps.numvend
+order by numpieza desc;
+
+2. Nombre de los vendedores que terminan su nombre por Z.
+select nomvend
+from vendedor
+where nomvend like '%z_%_%';
+
+3. Número y fecha de los pedidos realizados en el segundo semestre del 92.
+select numpedido, fecha
+from pedido
+where fecha>'1992-05-31';
+
+4. Obtener el número y nombre del vendedor, así como el número y nombre de las piezas de precio unitario 
+mayor que 20000 que suministren, ordenados por número y nombre de vendedor y por nombre de la pieza.
+5. Número de pieza y número y nombre de vendedor de aquellas piezas cuyo precio de venta es mayor que 5000 o su descuento de suministro es mayor que 10.
+6. Lista las piezas (nombre) suministradas por aquellos proveedores cuyo nombre empiece por S.
+7. Números de pieza de las piezas que se recuentan entre el 1 de octubre de 1992 y el 31 de octubre de 1992.
+8. Obtener el número y el nombre del vendedor, así como el número y nombre de las piezas de precio unitario mayor que 20000 que suministren, ordenados por número y nombre de vendedor y por nombre de la pieza.
+9. Nombre de los vendedores que han servido alguna pieza en menos tiempo que el ofertado.
+10. Número y nombre de los vendedores que suministran piezas con un descuento mayor al 10%.

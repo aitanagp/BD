@@ -1,0 +1,25 @@
+95.-Obtener   número   y   nombre   de   cada   pieza   comprada   junto   con   la   cantidad   devendedores que las suministran, ordenado alfabéticamente por el nombre de la mismay eliminando aquellas compradas a proveedores de la provincia de Alicante. (3)
+
+96.-Nombre de las empresas que tienen más de dos vendedores. (1)
+
+97.-Números de pedido que tengan más de tres líneas de pedido. (1)
+
+98.-Números de pedido donde el total de piezas pedidas es mayor que 40. (4)
+
+99.-Obtener   los   números   de   pedido   donde   el   importe   total   de   la   cantidad   de   piezasrecibidas sea superior a 100000. (3)
+
+100.-Para   las   piezas   que   se   hayan   suministrado   a   un   precio   unitario   medio   mayor   que26000   obtener   el   número   de   pieza,   el   máximo   precio   unitario,   y   la   cantidad   desuministradores. ( 1 registro con valores M-0003-C, 35000, 3)
+
+101.-Para las piezas que se ofrecen a un precio unitario medio mayor que 26000 (sin teneren cuenta los suministros menores de 25000) obtener el número de pieza, el máximoprecio unitario, y la cantidad de suministradores. (3)
+
+102.-Obtener aquellos números de pedido y fecha en que se confeccionaron cuya cantidadde artículos pedidos sea superior a 40 y la recibida inferior a 10.  (1)
+
+103.-Obtener el número de pieza y el precio unitario medio de aquellas piezas que tardende media 14 días como máximo en ser suministradas (diassum=tiempo de suministro).(19)
+
+104.-Mostrar   la   cantidad   de   piezas   que   se   recibieron   en   los   pedidos   del   año   1992(fecharecep),  el  total  de  piezas  pedidas  y  recibidas  así  como  el  dinero  obtenido  por  laventa  de  las  mismas  (cantrecibida).  (Valores  11,  266,  228,  1760845).Puedes usar la función YEAR.
+
+105.-Obtener el número, el nombre y el precio máximo unitario de las piezas cuyo preciode venta sea mayor que 25000 o menor que 17000, su descuento medio oscile entre 10y   17   y   que   tengan   un   precio   unitario   medio   superior   a   15000,  ordenado   por   preciomáximo. (1 registro con valores M-0002-C, MONITOR COLOR SONY ST, 30000)
+
+106.-Cantidad de proveedores que suministran la pieza ‘P-0001-33'. (valor 5)
+
+107.-Para   cada   pieza   suministrada,   obtener   el   número   de   pieza   y   sus   precios   unitariosmáximo y mínimo, exceptuando los suministros del vendedor número 1. (14)
